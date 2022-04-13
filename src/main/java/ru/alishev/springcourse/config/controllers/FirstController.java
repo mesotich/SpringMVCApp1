@@ -24,5 +24,26 @@ public class FirstController {
         return "first/goodbye";
     }
 
+    @GetMapping("/calculator")
+    public String calculator(@RequestParam(value = "a") int a,
+                             @RequestParam(value = "b") int b,
+                             @RequestParam(value = "action") String action,
+                             Model model) {
+        model.addAttribute("result", String.valueOf(calculate(a, b, action)));
+        return "first/calculator";
+    }
 
+    private double calculate(int a, int b, String action) {
+        switch (action) {
+            case "multiplication":
+                return a * b;
+            case "additional":
+                return a + b;
+            case "subtraction":
+                return a - b;
+            case "division":
+                return (double) a / b;
+        }
+        return 0;
+    }
 }
