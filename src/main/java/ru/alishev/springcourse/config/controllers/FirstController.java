@@ -29,7 +29,7 @@ public class FirstController {
                              @RequestParam(value = "b") int b,
                              @RequestParam(value = "action") String action,
                              Model model) {
-        model.addAttribute("result", String.valueOf(calculate(a, b, action)));
+        model.addAttribute("result", calculate(a, b, action));
         return "first/calculator";
     }
 
